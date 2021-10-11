@@ -4,12 +4,14 @@ from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password,make_password 
 
 
+def home(request):
+    return render(request,'home.html')
+
 def register(request):
-    if request.method=='GET':
-      
+    if request.method=='GET': 
         return render(request,'register.html')
     elif request.method=='POST':
-        print('GGGGGGGGGGGGGGGGGGGGGGGGGGGG')
+       
         userid=request.POST.get('userid',None)
         email=request.POST.get('useremail',None)
         password=request.POST.get('password',None)
@@ -28,7 +30,8 @@ def register(request):
                 password=make_password(password)
             )
             dsuser.save()
-        
+            return redirect('/')
+           
         return render(request,'register.html',res_data)
 
 # Create your views here.
