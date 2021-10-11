@@ -3,16 +3,27 @@ from .models import Dsuser
 from django.http import HttpResponse 
 from django.contrib.auth.hashers import check_password,make_password 
 from .forms import LoginForm
+from post.models import Post
+
+from django.http import Http404 
+from django.core.paginator import Paginator 
 
 
-def home(request):
-    return render(request,'home.html')
+def home(request):   #post list보여줌
+   
+    all_posts=Post.objects.all().order_by('-register_date')
+    #print('xxxx is ',all_posts)
+    page=int(request.GET.get('p',1))
+    paginator=Paginator(all_posts,2)
+
+    posts=paginator.get_page(page)
+    return render(request,'home.html',{'posts':posts})
 
 def login(request):
     if request.method=='POST':
         form=LoginForm(request.POST)
         if form.is_valid():
-            request.session['user']=form.user_id
+            request.session['user']=form.userid
             return redirect('/')
     else:
         form=LoginForm()

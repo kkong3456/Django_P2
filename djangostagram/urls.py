@@ -15,11 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from dsuser.views import home
+from post.views import post_write
+from django.conf import settings 
+import debug_toolbar
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/',include('dsuser.urls')),
-    path('',home)
+    path('upload/',post_write),
+    path('',home),
+    path('__debug__/',include(debug_toolbar.urls)),
 ]
