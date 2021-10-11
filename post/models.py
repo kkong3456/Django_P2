@@ -10,7 +10,7 @@ class Post(models.Model):
         verbose_name='작성자',
         on_delete=models.CASCADE
     )
-    img_url=models.CharField(max_length=256,verbose_name='이미지주소')
+    img_url=models.CharField(max_length=2560,verbose_name='이미지주소')
     contents=models.TextField(verbose_name='내용')
     tags=models.ManyToManyField('tag.Tag',verbose_name='태그')
     register_date=models.DateTimeField(auto_now_add=True,verbose_name='등록시간')
