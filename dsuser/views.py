@@ -24,6 +24,7 @@ def login(request):
         form=LoginForm(request.POST)
         if form.is_valid():
             request.session['user']=form.userid
+            print('xxxxx',form.userid)
             return redirect('/')
     else:
         form=LoginForm()

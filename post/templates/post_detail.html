@@ -5,8 +5,9 @@
 
             <label for="title">{{post.title}}</label>
             <div ><img src="{{post.img_url}}" style="width:300px;"/></div> 
-            <p >작성자 : {{post.userid}}</p>       
-            <p >작성일 : {{post.register_date}}</p>
+            <p>작성자 : {{post.userid}}</p>       
+            <p>작성일 : {{post.register_date}}</p>
+            <p>태크 : {{post.tags.all|join:", "}}</p>
         </div>
     </div>
 </div>

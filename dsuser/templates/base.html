@@ -36,6 +36,10 @@
               {% endif %}
             </div>
           </nav>
+          {% if request.session.user %} 
+          <p>Hello, {{request.session.email}}</p>
+          {% endif %}
+          
         {% block contents %} 
         {% endblock %} 
     </div>
