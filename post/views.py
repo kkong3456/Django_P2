@@ -45,4 +45,10 @@ def post_write(request):
     return render(request,'post_write.html',{'form':form})
 
     
-
+def post_detail(reqeust,pk):
+    try:
+        post=Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        raise Http404('게시글을 찾을 수 없습니다!')
+    
+    return render(reqeust,'post_detail.html',{'post':post})

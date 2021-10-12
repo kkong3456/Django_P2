@@ -2,29 +2,26 @@
 {% block contents %} 
 <div class="row mt-5">
     <div class="col-12 text-center">
-        {{post.title}}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>순번</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>일시</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for post in posts %}
-              
-                <tr onclick="">
-                    <td>{{post.id}}</td>
-                    <td>{{post.title}}</td>
-                    <td>{{post.userid}}</td>
-                    <td>{{post.register_date}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+       <h1>(❁´◡`❁) 모두의 라면(●'◡'●) </h1>
     </div>
+</div>
+<div class="row mt-5">
+    {% for post in posts %}
+    <div class="col-3 text-center">
+        {{post.title}}
+     
+
+        <div class="card" style="width: 18rem;" onclick="location.href='/post/{{post.id}}'">
+            <img src="{{post.img_url}}" class="card-img-top" alt="{{post.title}}">
+            <div class="card-body">
+              <h5 class="card-title">작성자 : {{post.userid}}</h5>
+              <p class="card-text"> 작성일 : {{post.register_date}}</p>
+              <a href="#" class="btn btn-primary">상세페이지로</a>
+            </div>
+        </div>
+       
+    </div>
+    {% endfor %}
 </div>
 
 <div class="row mt-2">
@@ -58,20 +55,7 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <button class="btn btn-primary" onclick="location.href=''">글쓰기</button>
-    </div>
-</div>
-
-<div class="row mt-5">
-    <div class="col-12">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+        <button class="btn btn-primary" onclick="location.href='/upload'">글쓰기</button>
     </div>
 </div>
 

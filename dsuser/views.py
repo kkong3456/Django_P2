@@ -14,7 +14,7 @@ def home(request):   #post list보여줌
     all_posts=Post.objects.all().order_by('-register_date')
     #print('xxxx is ',all_posts)
     page=int(request.GET.get('p',1))
-    paginator=Paginator(all_posts,2)
+    paginator=Paginator(all_posts,4)
 
     posts=paginator.get_page(page)
     return render(request,'home.html',{'posts':posts})
@@ -29,6 +29,11 @@ def login(request):
         form=LoginForm()
 
     return render(request,'login.html',{'form':form})
+
+def logout(request):
+    if request.session.get('user'): 
+        del(request.session['user']) 
+    return redirect('/')
         
 
 def register(request):

@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from dsuser.views import home
-from post.views import post_write
+from post.views import post_write,post_detail
 from django.conf import settings 
 import debug_toolbar
 
@@ -28,6 +28,7 @@ import debug_toolbar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/',include('dsuser.urls')),
+    path('post/<int:pk>',post_detail),
     path('upload/',post_write),
     path('',home),
     path('__debug__/',include(debug_toolbar.urls)),
