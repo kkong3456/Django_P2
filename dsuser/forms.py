@@ -28,5 +28,6 @@ class LoginForm(forms.Form):
                 self.add_error('password','비밀번호가 틀렸습니다.')
             else:
                 self.userid=dsuser.id
+                self.username=dsuser.userid  # 로그인시 화면에 hello 사용자명을 표시하기 위해 view로 전달후 base.html에 렌더
 
 

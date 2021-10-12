@@ -37,7 +37,7 @@
             </div>
           </nav>
           {% if request.session.user %} 
-          <p>Hello, {{request.session.email}}</p>
+          <p>Hello, {{request.session.username}}</p>
           {% endif %}
           
         {% block contents %} 

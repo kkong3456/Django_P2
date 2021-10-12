@@ -9,6 +9,7 @@ from django.http import Http404
 from django.core.paginator import Paginator 
 
 
+
 def home(request):   #post list보여줌
    
     all_posts=Post.objects.all().order_by('-register_date')
@@ -24,6 +25,7 @@ def login(request):
         form=LoginForm(request.POST)
         if form.is_valid():
             request.session['user']=form.userid
+            request.session['username']=form.username
             print('xxxxx',form.userid)
             return redirect('/')
     else:
